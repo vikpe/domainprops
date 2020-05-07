@@ -1,9 +1,12 @@
 dist/
 __pycache__/
 .idea/
+.pytest_cache/
+.venv/
 .tox/
 *.egg-info/
 *.py[cod]
 *$py.class
+.coverage
 .python-version
 poetry.lock
