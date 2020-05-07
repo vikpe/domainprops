@@ -27,6 +27,7 @@ Function | Returns | Description | Example | Result
 `bld` | `string` | Bottom level domain | `bld("foo.bar.com")` | `"foo"`
 `length` | `int` | Lenght of domain | `length("foo.com")` | `3`
 `idn` | `string` | IDN version of domain | `idn("f⊕⊕.com")` | `"xn--f-vioa.com"`
+`pattern` | `string` | Char pattern | `pattern("foo-123.com")` | `"lll-nnn"`
 `domains` | `list` | Domain parts of domain | `domains("foo.bar.com")` | `["foo", "bar", "com"]`
 `has_alpha` | `bool` | Has alpha characters | `has_alpha("foo.com")` | `True`
 `has_numbers` | `bool` | Has numbers | `has_numbers("foo.com")` | `False`

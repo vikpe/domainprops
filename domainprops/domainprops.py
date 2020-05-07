@@ -25,6 +25,20 @@ def domains(domain: str) -> list:
     return domain.split(".")
 
 
+def pattern(domain: str) -> str:
+    result = ""
+
+    for char in sld(domain):
+        if char.isalpha():
+            result += "l"
+        elif char.isdigit():
+            result += "n"
+        else:
+            result += char
+
+    return result
+
+
 def has_alpha(domain: str) -> bool:
     return bool(re.search(r"[a-z]", sld(domain), re.IGNORECASE))
 

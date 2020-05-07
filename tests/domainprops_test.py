@@ -24,6 +24,13 @@ class DomainTest(unittest.TestCase):
         self.assertEqual(["foo", "com"], domainprops.domains("foo.com"))
         self.assertEqual(["foo", "bar", "com"], domainprops.domains("foo.bar.com"))
 
+    def test_pattern(self):
+        self.assertEqual("lll", domainprops.pattern("foo.com"))
+        self.assertEqual("nnn", domainprops.pattern("123.com"))
+        self.assertEqual("lllnnn", domainprops.pattern("foo123.com"))
+        self.assertEqual("lll.lll", domainprops.pattern("foo.bar.com"))
+        self.assertEqual("lll-lll", domainprops.pattern("foo-bar.com"))
+
     def test_length(self):
         self.assertEqual(3, domainprops.length("foo.com"))
         self.assertEqual(3, domainprops.length("f⊕⊕.com"))
