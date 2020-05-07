@@ -34,6 +34,7 @@ class DomainTest(unittest.TestCase):
         self.assertTrue(domainprops.has_alpha("foo-123.com"))
         self.assertTrue(domainprops.has_alpha("foo.com"))
         self.assertTrue(domainprops.has_alpha("foo-bar.com"))
+        self.assertTrue(domainprops.has_alpha("foo.bar.com"))
         self.assertTrue(domainprops.has_alpha("f⊕⊕.com"))
         self.assertFalse(domainprops.has_alpha("123.com"))
 
@@ -42,6 +43,7 @@ class DomainTest(unittest.TestCase):
         self.assertTrue(domainprops.has_numbers("foo-123.com"))
         self.assertFalse(domainprops.has_numbers("foo.com"))
         self.assertFalse(domainprops.has_numbers("foo-bar.com"))
+        self.assertFalse(domainprops.has_numbers("foo.bar.com"))
         self.assertFalse(domainprops.has_numbers("f⊕⊕.com"))
         self.assertTrue(domainprops.has_numbers("123.com"))
 
@@ -50,6 +52,7 @@ class DomainTest(unittest.TestCase):
         self.assertTrue(domainprops.has_alphanum("foo-123.com"))
         self.assertFalse(domainprops.has_alphanum("foo.com"))
         self.assertFalse(domainprops.has_alphanum("foo-bar.com"))
+        self.assertFalse(domainprops.has_alphanum("foo.bar.com"))
         self.assertFalse(domainprops.has_alphanum("f⊕⊕.com"))
         self.assertFalse(domainprops.has_alphanum("123.com"))
 
@@ -62,7 +65,8 @@ class DomainTest(unittest.TestCase):
         self.assertFalse(domainprops.is_alpha("foo-123.com"))
         self.assertTrue(domainprops.is_alpha("foo.com"))
         self.assertFalse(domainprops.is_alpha("foo-bar.com"))
-        self.assertTrue(domainprops.is_alpha("f⊕⊕.com"))
+        self.assertFalse(domainprops.is_alpha("foo.bar.com"))
+        self.assertFalse(domainprops.is_alpha("f⊕⊕.com"))
         self.assertFalse(domainprops.is_alpha("123.com"))
 
     def test_is_numeric(self):
@@ -70,6 +74,7 @@ class DomainTest(unittest.TestCase):
         self.assertFalse(domainprops.is_numeric("foo-123.com"))
         self.assertFalse(domainprops.is_numeric("foo.com"))
         self.assertFalse(domainprops.is_numeric("foo-bar.com"))
+        self.assertFalse(domainprops.is_numeric("foo.bar.com"))
         self.assertFalse(domainprops.is_numeric("f⊕⊕.com"))
         self.assertTrue(domainprops.is_numeric("123.com"))
 
@@ -78,6 +83,7 @@ class DomainTest(unittest.TestCase):
         self.assertFalse(domainprops.is_alphanumeric("foo-123.com"))
         self.assertFalse(domainprops.is_alphanumeric("foo.com"))
         self.assertFalse(domainprops.is_alphanumeric("foo-bar.com"))
+        self.assertFalse(domainprops.is_alphanumeric("foo.bar.com"))
         self.assertFalse(domainprops.is_alphanumeric("f⊕⊕.com"))
         self.assertFalse(domainprops.is_alphanumeric("123.com"))
 

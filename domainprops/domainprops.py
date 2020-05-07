@@ -26,13 +26,11 @@ def domains(domain: str) -> list:
 
 
 def has_alpha(domain: str) -> bool:
-    base = sld(domain)
-    return bool(re.search(r"[a-z]", base, re.IGNORECASE))
+    return bool(re.search(r"[a-z]", sld(domain), re.IGNORECASE))
 
 
 def has_numbers(domain: str) -> bool:
-    base = sld(domain)
-    return bool(re.search(r"\d", base))
+    return bool(re.search(r"\d", sld(domain)))
 
 
 def has_alphanum(domain: str) -> bool:
@@ -44,15 +42,15 @@ def has_hyphens(domain: str) -> bool:
 
 
 def is_alpha(domain: str) -> bool:
-    return not (has_numbers(domain) or has_hyphens(domain))
+    return sld(domain).isalpha()
 
 
 def is_numeric(domain: str) -> bool:
-    return not (has_alpha(domain) or has_hyphens(domain))
+    return sld(domain).isdigit()
 
 
 def is_alphanumeric(domain: str) -> bool:
-    return has_alphanum(domain) and not has_hyphens(domain)
+    return has_alphanum(domain) and not has_hyphens(domain) and not is_subdomain(domain)
 
 
 def is_subdomain(domain: str) -> bool:
