@@ -3,6 +3,7 @@ name = "domainprops"
 version = "0.1.0"
 description = "Parse domain name properties."
 authors = ["Viktor Persson <viktor.persson@arcsin.se>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.6"
