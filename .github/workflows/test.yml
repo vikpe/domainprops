@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.8]
+        python-version: [3.8]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -22,8 +22,9 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: |
-          pip install poetry
+          pip install poetry codecov
           poetry install
       - name: Run tests
-        run: |
-          poetry run pytest tests/
+        run: poetry run pytest --cov tests/
+      - name: Upload code coverage
+       - run: codecov --token=${{ secrets.CODECOV_TOKEN }}
