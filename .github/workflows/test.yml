@@ -25,6 +25,6 @@ jobs:
           pip install poetry codecov
           poetry install
       - name: Run tests
-        run: poetry run pytest --cov tests --cov-report=xml
+        run: poetry run pytest tests --cov --cov-report=xml:domainprops/coverage.xml
       - name: Upload code coverage
         run: codecov --token=${{ secrets.CODECOV_TOKEN }}
