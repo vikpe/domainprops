@@ -23,7 +23,7 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: |
-          pip install poetry codecov
+          pip install poetry
           poetry install
       - name: Run tests
         run: poetry run pytest tests --cov --cov-report=xml:domainprops/coverage.xml
