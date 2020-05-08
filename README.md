@@ -35,5 +35,5 @@ Function | Returns | Description | Example | Result
 `has_hyphens` | `bool` | Has hyphens | `has_hyphens("foo.com")` | `False`
 `is_alpha` | `bool` | Is strictly alpha characters | `is_alpha("foo.com")` | `True`
 `is_numeric` | `bool` | Is strictly numbers | `is_numeric("foo.com")` | `False`
-`is_alphanumeric` | `bool` | Is strictly alpha characters and numbers | `is_alphanumeric("foo.com")` | `False`
+`is_alphanumeric` | `bool` | Is strictly alpha characters and/or numbers | `is_alphanumeric("foo.com")` | `True`
 `is_subdomain` | `bool` | Is sub domain | `is_subdomain("foo.com")` | `False`

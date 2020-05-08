@@ -88,11 +88,11 @@ class DomainTest(unittest.TestCase):
     def test_is_alphanum(self):
         self.assertTrue(domainprops.is_alphanumeric("foo123.com"))
         self.assertFalse(domainprops.is_alphanumeric("foo-123.com"))
-        self.assertFalse(domainprops.is_alphanumeric("foo.com"))
+        self.assertTrue(domainprops.is_alphanumeric("foo.com"))
         self.assertFalse(domainprops.is_alphanumeric("foo-bar.com"))
         self.assertFalse(domainprops.is_alphanumeric("foo.bar.com"))
         self.assertFalse(domainprops.is_alphanumeric("f⊕⊕.com"))
-        self.assertFalse(domainprops.is_alphanumeric("123.com"))
+        self.assertTrue(domainprops.is_alphanumeric("123.com"))
 
     def test_is_subdomain(self):
         self.assertFalse(domainprops.is_subdomain("foo.com"))

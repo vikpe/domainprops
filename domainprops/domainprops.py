@@ -64,7 +64,7 @@ def is_numeric(domain: str) -> bool:
 
 
 def is_alphanumeric(domain: str) -> bool:
-    return has_alphanum(domain) and not has_hyphens(domain) and not is_subdomain(domain)
+    return sld(domain).isalnum()
 
 
 def is_subdomain(domain: str) -> bool:
