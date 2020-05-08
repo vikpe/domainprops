@@ -31,7 +31,6 @@ Function | Returns | Description | Example | Result
 `domains` | `list` | Domain parts of domain | `domains("foo.bar.com")` | `["foo", "bar", "com"]`
 `has_alpha` | `bool` | Has alpha characters | `has_alpha("foo.com")` | `True`
 `has_numbers` | `bool` | Has numbers | `has_numbers("foo.com")` | `False`
-`has_alphanum` | `bool` | Has alpha characters and numbers | `has_alphanum("foo.com")` | `False`
 `has_hyphens` | `bool` | Has hyphens | `has_hyphens("foo.com")` | `False`
 `is_alpha` | `bool` | Is strictly alpha characters | `is_alpha("foo.com")` | `True`
 `is_numeric` | `bool` | Is strictly numbers | `is_numeric("foo.com")` | `False`

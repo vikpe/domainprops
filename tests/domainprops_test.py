@@ -54,15 +54,6 @@ class DomainTest(unittest.TestCase):
         self.assertFalse(domainprops.has_numbers("f⊕⊕.com"))
         self.assertTrue(domainprops.has_numbers("123.com"))
 
-    def test_has_alphanum(self):
-        self.assertTrue(domainprops.has_alphanum("foo123.com"))
-        self.assertTrue(domainprops.has_alphanum("foo-123.com"))
-        self.assertFalse(domainprops.has_alphanum("foo.com"))
-        self.assertFalse(domainprops.has_alphanum("foo-bar.com"))
-        self.assertFalse(domainprops.has_alphanum("foo.bar.com"))
-        self.assertFalse(domainprops.has_alphanum("f⊕⊕.com"))
-        self.assertFalse(domainprops.has_alphanum("123.com"))
-
     def test_has_hyphens(self):
         self.assertFalse(domainprops.has_hyphens("foo.com"))
         self.assertTrue(domainprops.has_hyphens("foo-bar.com"))

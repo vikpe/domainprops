@@ -47,10 +47,6 @@ def has_numbers(domain: str) -> bool:
     return bool(re.search(r"\d", sld(domain)))
 
 
-def has_alphanum(domain: str) -> bool:
-    return has_alpha(domain) and has_numbers(domain)
-
-
 def has_hyphens(domain: str) -> bool:
     return "-" in sld(domain)
 
