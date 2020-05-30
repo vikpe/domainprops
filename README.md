@@ -1,5 +1,5 @@
 # Domainprops
-> Parse domain name properties
+> Python package for parsing domain name properties
 
 ![test](https://github.com/vikpe/domainprops/workflows/test/badge.svg?branch=master) [![codecov](https://codecov.io/gh/vikpe/domainprops/branch/master/graph/badge.svg)](https://codecov.io/gh/vikpe/domainprops) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
