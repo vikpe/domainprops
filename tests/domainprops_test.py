@@ -19,6 +19,8 @@ class DomainTest(unittest.TestCase):
     def test_idn(self):
         self.assertEqual("foo.com", domainprops.idn("foo.com"))
         self.assertEqual("xn--f-vioa.com", domainprops.idn("f⊕⊕.com"))
+        self.assertEqual("xn--espaol-zwa.es", domainprops.idn("español.es"))
+        self.assertEqual("xn--ei-2va.com", domainprops.idn("eži.com"))
 
     def test_domains(self):
         self.assertEqual(["foo", "com"], domainprops.domains("foo.com"))
