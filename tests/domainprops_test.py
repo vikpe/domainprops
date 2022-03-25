@@ -1,102 +1,109 @@
-import unittest
-
 from domainprops import domainprops
 
 
-class DomainTest(unittest.TestCase):
-    def test_sld(self):
-        self.assertEqual("foo", domainprops.sld("foo.com"))
-        self.assertEqual("foo.bar", domainprops.sld("foo.bar.com"))
-
-    def test_bld(self):
-        self.assertEqual("foo", domainprops.bld("foo.com"))
-        self.assertEqual("foo", domainprops.bld("foo.bar.com"))
-
-    def test_tld(self):
-        self.assertEqual("com", domainprops.tld("foo.com"))
-        self.assertEqual("com", domainprops.tld("foo.bar.com"))
-
-    def test_idn(self):
-        self.assertEqual("foo.com", domainprops.idn("foo.com"))
-        self.assertEqual("xn--f-vioa.com", domainprops.idn("f⊕⊕.com"))
-        self.assertEqual("xn--espaol-zwa.es", domainprops.idn("español.es"))
-        self.assertEqual("xn--ei-2va.com", domainprops.idn("eži.com"))
-
-    def test_domains(self):
-        self.assertEqual(["foo", "com"], domainprops.domains("foo.com"))
-        self.assertEqual(["foo", "bar", "com"], domainprops.domains("foo.bar.com"))
-
-    def test_pattern(self):
-        self.assertEqual("lll", domainprops.pattern("foo.com"))
-        self.assertEqual("nnn", domainprops.pattern("123.com"))
-        self.assertEqual("lllnnn", domainprops.pattern("foo123.com"))
-        self.assertEqual("lll.lll", domainprops.pattern("foo.bar.com"))
-        self.assertEqual("lll-lll", domainprops.pattern("foo-bar.com"))
-
-    def test_length(self):
-        self.assertEqual(3, domainprops.length("foo.com"))
-        self.assertEqual(3, domainprops.length("f⊕⊕.com"))
-        self.assertEqual(7, domainprops.length("foo.bar.com"))
-
-    def test_has_alpha(self):
-        self.assertTrue(domainprops.has_alpha("foo123.com"))
-        self.assertTrue(domainprops.has_alpha("foo-123.com"))
-        self.assertTrue(domainprops.has_alpha("foo.com"))
-        self.assertTrue(domainprops.has_alpha("foo-bar.com"))
-        self.assertTrue(domainprops.has_alpha("foo.bar.com"))
-        self.assertTrue(domainprops.has_alpha("f⊕⊕.com"))
-        self.assertFalse(domainprops.has_alpha("123.com"))
-
-    def test_has_numbers(self):
-        self.assertTrue(domainprops.has_numbers("foo123.com"))
-        self.assertTrue(domainprops.has_numbers("foo-123.com"))
-        self.assertFalse(domainprops.has_numbers("foo.com"))
-        self.assertFalse(domainprops.has_numbers("foo-bar.com"))
-        self.assertFalse(domainprops.has_numbers("foo.bar.com"))
-        self.assertFalse(domainprops.has_numbers("f⊕⊕.com"))
-        self.assertTrue(domainprops.has_numbers("123.com"))
-
-    def test_has_hyphens(self):
-        self.assertFalse(domainprops.has_hyphens("foo.com"))
-        self.assertTrue(domainprops.has_hyphens("foo-bar.com"))
-
-    def test_is_alpha(self):
-        self.assertFalse(domainprops.is_alpha("foo123.com"))
-        self.assertFalse(domainprops.is_alpha("foo-123.com"))
-        self.assertTrue(domainprops.is_alpha("foo.com"))
-        self.assertFalse(domainprops.is_alpha("foo-bar.com"))
-        self.assertFalse(domainprops.is_alpha("foo.bar.com"))
-        self.assertFalse(domainprops.is_alpha("f⊕⊕.com"))
-        self.assertFalse(domainprops.is_alpha("123.com"))
-
-    def test_is_numeric(self):
-        self.assertFalse(domainprops.is_numeric("foo123.com"))
-        self.assertFalse(domainprops.is_numeric("foo-123.com"))
-        self.assertFalse(domainprops.is_numeric("foo.com"))
-        self.assertFalse(domainprops.is_numeric("foo-bar.com"))
-        self.assertFalse(domainprops.is_numeric("foo.bar.com"))
-        self.assertFalse(domainprops.is_numeric("f⊕⊕.com"))
-        self.assertTrue(domainprops.is_numeric("123.com"))
-
-    def test_is_alphanum(self):
-        self.assertTrue(domainprops.is_alphanumeric("foo123.com"))
-        self.assertFalse(domainprops.is_alphanumeric("foo-123.com"))
-        self.assertTrue(domainprops.is_alphanumeric("foo.com"))
-        self.assertFalse(domainprops.is_alphanumeric("foo-bar.com"))
-        self.assertFalse(domainprops.is_alphanumeric("foo.bar.com"))
-        self.assertFalse(domainprops.is_alphanumeric("f⊕⊕.com"))
-        self.assertTrue(domainprops.is_alphanumeric("123.com"))
-
-    def test_is_subdomain(self):
-        self.assertFalse(domainprops.is_subdomain("foo.com"))
-        self.assertFalse(domainprops.is_subdomain("f⊕⊕.com"))
-        self.assertFalse(domainprops.is_subdomain("foo-bar.com"))
-        self.assertTrue(domainprops.is_subdomain("foo.bar.com"))
-
-    def test_is_idn(self):
-        self.assertFalse(domainprops.is_idn("foo.com"))
-        self.assertTrue(domainprops.is_idn("f⊕⊕.com"))
+def test_sld():
+    assert "foo" == domainprops.sld("foo.com")
+    assert "foo.bar" == domainprops.sld("foo.bar.com")
 
 
-if __name__ == "main":
-    unittest.main()
+def test_bld():
+    assert "foo" == domainprops.bld("foo.com")
+    assert "foo" == domainprops.bld("foo.bar.com")
+
+
+def test_tld():
+    assert "com" == domainprops.tld("foo.com")
+    assert "com" == domainprops.tld("foo.bar.com")
+
+
+def test_idn():
+    assert "foo.com" == domainprops.idn("foo.com")
+    assert "xn--f-vioa.com" == domainprops.idn("f⊕⊕.com")
+    assert "xn--espaol-zwa.es" == domainprops.idn("español.es")
+    assert "xn--ei-2va.com" == domainprops.idn("eži.com")
+
+
+def test_domains():
+    assert ["foo", "com"] == domainprops.domains("foo.com")
+    assert ["foo", "bar", "com"] == domainprops.domains("foo.bar.com")
+
+
+def test_pattern():
+    assert "lll" == domainprops.pattern("foo.com")
+    assert "nnn" == domainprops.pattern("123.com")
+    assert "lllnnn" == domainprops.pattern("foo123.com")
+    assert "lll.lll" == domainprops.pattern("foo.bar.com")
+    assert "lll-lll" == domainprops.pattern("foo-bar.com")
+
+
+def test_length():
+    assert 3 == domainprops.length("foo.com")
+    assert 3 == domainprops.length("f⊕⊕.com")
+    assert 7 == domainprops.length("foo.bar.com")
+
+
+def test_has_alpha():
+    assert domainprops.has_alpha("foo123.com")
+    assert domainprops.has_alpha("foo-123.com")
+    assert domainprops.has_alpha("foo.com")
+    assert domainprops.has_alpha("foo-bar.com")
+    assert domainprops.has_alpha("foo.bar.com")
+    assert domainprops.has_alpha("f⊕⊕.com")
+    assert not domainprops.has_alpha("123.com")
+
+
+def test_has_numbers():
+    assert domainprops.has_numbers("foo123.com")
+    assert domainprops.has_numbers("foo-123.com")
+    assert not domainprops.has_numbers("foo.com")
+    assert not domainprops.has_numbers("foo-bar.com")
+    assert not domainprops.has_numbers("foo.bar.com")
+    assert not domainprops.has_numbers("f⊕⊕.com")
+    assert domainprops.has_numbers("123.com")
+
+
+def test_has_hyphens():
+    assert not domainprops.has_hyphens("foo.com")
+    assert domainprops.has_hyphens("foo-bar.com")
+
+
+def test_is_alpha():
+    assert not domainprops.is_alpha("foo123.com")
+    assert not domainprops.is_alpha("foo-123.com")
+    assert domainprops.is_alpha("foo.com")
+    assert not domainprops.is_alpha("foo-bar.com")
+    assert not domainprops.is_alpha("foo.bar.com")
+    assert not domainprops.is_alpha("f⊕⊕.com")
+    assert not domainprops.is_alpha("123.com")
+
+
+def test_is_numeric():
+    assert not domainprops.is_numeric("foo123.com")
+    assert not domainprops.is_numeric("foo-123.com")
+    assert not domainprops.is_numeric("foo.com")
+    assert not domainprops.is_numeric("foo-bar.com")
+    assert not domainprops.is_numeric("foo.bar.com")
+    assert not domainprops.is_numeric("f⊕⊕.com")
+    assert domainprops.is_numeric("123.com")
+
+
+def test_is_alphanum():
+    assert domainprops.is_alphanumeric("foo123.com")
+    assert not domainprops.is_alphanumeric("foo-123.com")
+    assert domainprops.is_alphanumeric("foo.com")
+    assert not domainprops.is_alphanumeric("foo-bar.com")
+    assert not domainprops.is_alphanumeric("foo.bar.com")
+    assert not domainprops.is_alphanumeric("f⊕⊕.com")
+    assert domainprops.is_alphanumeric("123.com")
+
+
+def test_is_subdomain():
+    assert not domainprops.is_subdomain("foo.com")
+    assert not domainprops.is_subdomain("f⊕⊕.com")
+    assert not domainprops.is_subdomain("foo-bar.com")
+    assert domainprops.is_subdomain("foo.bar.com")
+
+
+def test_is_idn():
+    assert not domainprops.is_idn("foo.com")
+    assert domainprops.is_idn("f⊕⊕.com")
